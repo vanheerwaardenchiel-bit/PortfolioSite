@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chiel van Heerwaarden – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Chiel van Heerwaarden – projects, documents, and games." />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card-bg: #111827;
+      --accent: #38bdf8;
+      --accent-soft: #0f172a;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", sans-serif;
+      background: radial-gradient(circle at top left, #1e293b, #020617 50%);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden; /* prevent horizontal chop on small screens */
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    /* Header / Nav */
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0.75rem;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #0ea5e9 40%, #1d4ed8);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+      flex-wrap: nowrap;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      padding: 0.25rem 0.4rem;
+      border-radius: 999px;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      background: rgba(148, 163, 184, 0.12);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    /* Section layout */
+
+    main {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    section {
+      background: radial-gradient(circle at top, #020617, #020617 55%, #000);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem 1.75rem 2rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    section:not(:first-of-type) {
+      background: linear-gradient(145deg, #020617, #020617 30%, #030712);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-main h1 {
+      font-size: clamp(2.3rem, 4vw, 2.8rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 36rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      border-radius: 999px;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .pill-accent {
+      background: radial-gradient(circle, #38bdf8, #0ea5e9 50%, #1e40af);
+      color: #0b1120;
+      border: none;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: #020617;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: transform 0.06s ease, box-shadow 0.12s ease,
+        background 0.12s ease, border-color 0.12s ease;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 30% 0%, #38bdf8, #0ea5e9 30%, #1e40af);
+      border-color: rgba(56, 189, 248, 0.8);
+      color: #020617;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.85);
+      border-color: rgba(148, 163, 184, 0.9);
+    }
+
+    .btn-primary:hover {
+      border-color: rgba(56, 189, 248, 1);
+    }
+
+    .hero-highlight-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .hero-highlight-item {
+      padding: 0.75rem 0.8rem;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .hero-highlight-item span {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-highlight-item strong {
+      font-size: 0.9rem;
+    }
+
+    .hero-side {
+      background: radial-gradient(circle at top, #1d283a, #020617 60%);
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .hero-side h2 {
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-side p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-side-list {
+      list-style: none;
+      font-size: 0.85rem;
+      display: grid;
+      gap: 0.4rem;
+      color: var(--text-main);
+    }
+
+    .hero-side-list li::before {
+      content: "→";
+      opacity: 0.6;
+      margin-right: 0.5rem;
+    }
+
+    /* Grid helpers */
+
+    .grid {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    /* Cards */
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 0.9rem 0.95rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    /* Card image on top of games */
+    .card-image {
+      border-radius: 14px;
+      overflow: hidden;
+      margin: -0.25rem -0.25rem 0.65rem;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+    }
+
+    .card-image a {
+      display: block;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .card:hover .card-image img {
+      transform: scale(1.03);
+      opacity: 0.96;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .card-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card-footer {
+      margin-top: 0.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    .link-chip {
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--text-muted);
+    }
+
+    .link-chip span {
+      font-size: 0.85rem;
+    }
+
+    .link-chip::before {
+      content: "↗";
+      font-size: 0.65rem;
+      opacity: 0.6;
+    }
+
+    /* Contact */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 1.5rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-list li span {
+      display: inline-block;
+      width: 90px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* === ANIMATIONS === */
+
+    .fade-in-up,
+    .slide-in-left {
+      opacity: 0;
+    }
+
+    .fade-in-up {
+      transform: translateY(18px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .slide-in-left {
+      transform: translateX(-24px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-in-left.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Responsive tweaks */
+
+    @media (max-width: 768px) {
+      header {
+        border-radius: 16px;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .page {
+        padding: 1.25rem 1rem 3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-meta {
+        flex-direction: column;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;              /* allow nav to wrap on very small screens */
+        gap: 0.5rem 0.9rem;           /* tighter gaps so it doesn’t feel cramped */
+      }
+
+      .page {
+        padding: 1.25rem 0.9rem 3rem; /* slightly less side padding on tiny screens */
+      }
+
+      section {
+        padding: 1.4rem 1.25rem 1.75rem;
+      }
+
+      .hero-side {
+        margin-top: 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- Header / Nav -->
+    <header class="fade-in-up">
+      <div class="brand">
+        <div class="brand-avatar">CH</div>
+        <div>Chiel van Heerwaarden</div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#games">Games</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero fade-in-up" id="about">
+        <div class="hero-main">
+          <h1>Chiel van Heerwaarden</h1>
+          <p class="hero-tagline">
+            Bachelor of ICT student and developer documenting experiments, prototypes,
+            games, and other findings.From developing Unity games to managing the process.
+          </p>
+
+          <!-- <div class="hero-meta">
+            <div class="pill pill-accent">Portfolio</div>
+            <div class="pill">Games – Itch.io</div>
+          </div> -->
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="Docs/CV.pdf" target="_blank">
+              Download CV (PDF)
+            </a>
+            <a class="btn" href="#portfolio">View portfolio ↓</a>
+          </div>
+
+          <div class="hero-highlight-list">
+            <div class="hero-highlight-item">
+              <span>Highlight</span>
+              <strong>Project management & game development projects</strong>
+            </div>
+            <div class="hero-highlight-item">
+              <span>Focus</span>
+              <strong>Combining management/ developing with other learning experiences</strong>
+            </div>
+            <div class="hero-highlight-item">
+              <span>Currently working on</span>
+              <strong>Serious Game for Gemeente Amsterdam</strong>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <h2>About this space</h2>
+          <p>
+            This portfolio collects projects, documents, and games I created during
+            my Bachelor of ICT and beyond. It’s a living archive of things I build,
+            test, and learn from.
+          </p>
+          <ul class="hero-side-list">
+            <li>Play my games in the Games section (via itch.io).</li>
+            <li>Open reports and write-ups in Documents.</li>
+            <li>Jump into code and experiments via Portfolio.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- PORTFOLIO PROJECTS -->
+      <section id="portfolio" class="fade-in-up">
+        <div class="section-header">
+          <h2 class="section-title">Portfolio</h2>
+          <p class="section-subtitle">
+            Projects contain documents, codebase, results, images & more.
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <!-- Studio Dark Tech Card-->
+          <a href="Studio-Dark-Tech.html" style="text-decoration:none; color:inherit;">
+            <article class="card fade-in-up">
+              <div class="card-header">
+                <h3 class="card-title">Studio Dark Tech</h3>
+                <span class="card-tag">Semester</span>
+              </div>
+              <div class="card-body">
+                Overview of my personal development plan, research, and supporting material for Studio Dark Tech.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open overview</span></span>
+              </div>
+            </article>
+          </a>
+
+          <!-- Gameplay Engineering -->
+          <a href="Gameplay-Engineering.html" style="text-decoration:none; color:inherit;">
+            <article class="card fade-in-up">
+              <div class="card-header">
+                <h3 class="card-title">Gameplay Engineering</h3>
+                <span class="card-tag">Semester</span>
+              </div>
+              <div class="card-body">
+                Compact recap of my work and experiments in Gameplay Engineering as a third year student. 
+                Page includes game documents, prototypes and research.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open overview</span></span>
+              </div>
+            </article>
+          </a>
+
+          <!-- Gameplay Engineering -->
+          <a href="Internship.html" style="text-decoration:none; color:inherit;">
+            <article class="card fade-in-up">
+              <div class="card-header">
+                <h3 class="card-title">Tata steel academy</h3>
+                <span class="card-tag">Internship</span>
+              </div>
+              <div class="card-body">
+                Internship project overview including my contributions to a serious game for students at the Tata Steel Academy.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open overview</span></span>
+              </div>
+            </article>
+          </a>
+
+          <!-- Gameplay Engineering -->
+          <a href="Experiments.html" style="text-decoration:none; color:inherit;">
+            <article class="card fade-in-up">
+              <div class="card-header">
+                <h3 class="card-title">Experiments</h3>
+                <span class="card-tag">Education</span>
+              </div>
+              <div class="card-body">
+                Page containing various experiments I conducted during my studies and personal projects.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open overview</span></span>
+              </div>
+            </article>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- DOCUMENTS / FINDINGS
+      <section id="documents" class="fade-in-up">
+        <div class="section-header">
+          <h2 class="section-title">Documents & Findings</h2>
+          <p class="section-subtitle">
+            Reports, write-ups, and other artifacts I want to highlight.
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card fade-in-up">
+            <div class="card-header">
+              <h3 class="card-title">Finding / Report #1</h3>
+              <span class="card-tag">PDF</span>
+            </div>
+            <div class="card-body">
+              One or two lines explaining what this document covers and why it’s useful.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="Docs/report1.pdf" target="_blank">
+                <span>Open PDF</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card fade-in-up">
+            <div class="card-header">
+              <h3 class="card-title">Finding / Note #2</h3>
+              <span class="card-tag">Note</span>
+            </div>
+            <div class="card-body">
+              Summary of an experiment, user test, or any other learning I want
+              to document.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="Docs/note2.md" target="_blank">
+                <span>View notes (raw)</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section> -->
+
+      <!-- GAMES -->
+      <section id="games" class="fade-in-up">
+        <div class="section-header">
+          <h2 class="section-title">Games</h2>
+          <p class="section-subtitle">
+            Small browser games I made as a Bachelor of ICT student.
+            They run in the browser via itch.io (WebGL).
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <!-- Grimventory -->
+          <article class="card fade-in-up">
+            <div class="card-image">
+              <a href="https://lazarus97.itch.io/grimventory" target="_blank">
+                <img src="Images/grimventory_thumbnail.png" alt="Grimventory cover" />
+              </a>
+            </div>
+            <div class="card-header">
+              <h3 class="card-title">Grimventory: dynamic inventory system</h3>
+              <span class="card-tag">Unity plugin</span>
+            </div>
+            <div class="card-body">
+              A Unity plugin for developers to easily add different inventory types to their projects.
+            </div>
+          </article>
+
+          <!-- Millionaires journey  -->
+          <article class="card fade-in-up">
+            <div class="card-image">
+              <a href="https://mockaa.itch.io/millionaires-journey" target="_blank">
+                <img src="Images/millionaires_journey_thumbnail.png" alt="Milionaires journey cover" />
+              </a>
+            </div>
+            <div class="card-header">
+              <h3 class="card-title">Millionaires Journey</h3>
+              <span class="card-tag">WebGL</span>
+            </div>
+            <div class="card-body">
+              Millionaires journey is a tycoon game where the player grinds coins by whacking down moneygrass. 
+            </div>
+          </article>
+
+          <!-- Pompinstallatie -->
+          <article class="card fade-in-up">
+            <div class="card-image">
+              <a href="https://lachkid-official.itch.io/cancer-crushv4" target="_blank">
+                <img src="Images/TataPompen.png" alt="Tata steel cover" />
+              </a>
+            </div>
+            <div class="card-header">
+              <h3 class="card-title">Pompinstallatie simulation</h3>
+              <span class="card-tag">simulation</span>
+            </div>
+            <div class="card-body">
+              A simulation made during my internship, used by students to practice with heavy machinery from behind their laptop.
+            </div>
+          </article>
+
+          <!-- Last stand -->
+          <article class="card fade-in-up">
+            <div class="card-image">
+              <a href="https://kevvie303.itch.io/last-stand" target="_blank">
+                <img src="Images/Last_Stand.png" alt="Last stand cover" />
+              </a>
+            </div>
+            <div class="card-header">
+              <h3 class="card-title">Last stand</h3>
+              <span class="card-tag">WebGL</span>
+            </div>
+            <div class="card-body">
+              Some mysterious shapes are on a rampage, survive untill they run out of energy!
+            </div>
+          </article>
+
+          <!--Hellbound Express-->
+          <article class="card fade-in-up">
+            <div class="card-image">
+              <a href="https://lachkid-official.itch.io/paranormal-well" target="_blank">
+                <img src="Images/Hellbound_Express.png" alt="Hellbound Express cover" />
+              </a>
+            </div>
+            <div class="card-header">
+              <h3 class="card-title">Hellbound Express</h3>
+              <span class="card-tag">WebGL</span>
+            </div>
+            <div class="card-body">
+              After a life of sin and train robberies, you are bound to eternally fight your way through this hellish express!
+            </div>
+          </article>
+       
+  
+
+      <!-- Dungeon Discovery- -->
+          <article class="card fade-in-up">
+            <div class="card-image">
+              <a href="https://mockaa.itch.io/dungeon-discovery" target="_blank">
+                <img src="Images/Dungeon_Discovery.png" alt="Dungeon Discovery" />
+              </a>
+            </div>
+            <div class="card-header">
+              <h3 class="card-title">Dungeon Discovery</h3>
+              <span class="card-tag">JavaScript</span>
+            </div>
+            <div class="card-body">
+              The first game I ever created in a team. Although a challenge, this game has a special place for me.
+            </div>
+          </article>
+        </div>
+      </section>
+
+
+      <!-- CONTACT -->
+      <section id="contact" class="fade-in-up">
+        <!-- <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+          <p class="section-subtitle">
+            Ways to reach me or explore my work further.
+          </p>
+        </div> -->
+
+        <div class="contact-grid">
+          <div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+              Feel free to reach out for collaboration, feedback, or if you’re
+              curious about any of the findings in this portfolio.
+            </p>
+
+            <ul class="contact-list">
+              <li>
+                <span>Email</span>
+                <a href="mailto:vanheerwaardenchiel@.com">vanheerwaardenchiel@gmail.com</a>
+              </li>
+              <li>
+                <span>GitHub</span>
+                <a href="https://github.com/vanHeerwaarden" target="_blank">
+                   github.com/vanHeerwaarden
+                </a>
+              </li>
+              <li>
+                <span>LinkedIn</span>
+                <a href="https://www.linkedin.com/in/chiel-van-heerwaarden-669003293" target="_blank">
+                  My LinkedIn
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card fade-in-up">
+            <div class="card-header">
+              <h3 class="card-title">What you’ll find here</h3>
+            </div>
+            <div class="card-body">
+              <ul style="list-style: disc; padding-left: 1rem; font-size: 0.85rem;">
+                <li>Project overviews with direct links to code and documents.</li>
+                <li>Games and prototypes you can play via itch.io.</li>
+                <li>Notes and findings from experiments, tests, or research.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Chiel van Heerwaarden
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Year
+      var yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      function revealStaggered(selector, baseDelay, step) {
+        var nodes = document.querySelectorAll(selector);
+        nodes.forEach(function (el, index) {
+          var delay = baseDelay + index * step;
+          el.style.transitionDelay = delay + 'ms';
+          // Use rAF to ensure styles are applied before adding the class
+          requestAnimationFrame(function () {
+            el.classList.add('is-visible');
+          });
+        });
+      }
+
+      // Small timeout so the browser has painted before we animate
+      setTimeout(function () {
+        revealStaggered('.fade-in-up', 0, 80);
+        revealStaggered('.slide-in-left', 200, 90);
+      }, 50);
+    });
+  </script>
+</body>
+</html>
