@@ -8,17 +8,22 @@
 
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-alt: #020617;
-      --card-bg: #111827;
-      --accent: #38bdf8;
-      --accent-soft: #0f172a;
+      --bg: #0b0b0f;
+      --bg-alt: #050507;
+      --card-bg: #111114;
+
+      /* 🔴 RED ACCENT PALETTE */
+      --accent: #ef4444;
+      --accent-soft: rgba(239, 68, 68, 0.15);
+
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
-      --border-subtle: #1f2937;
+
+      --border-subtle: #1f1f24;
       --radius-lg: 16px;
       --radius-xl: 24px;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.75);
+
+      --shadow-soft: 0 18px 40px rgba(80, 10, 10, 0.75);
     }
 
     * {
@@ -28,12 +33,11 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Inter", sans-serif;
-      background: radial-gradient(circle at top left, #1e293b, #020617 50%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      background: radial-gradient(circle at top left, #1a0b0b, #050507 55%);
       color: var(--text-main);
       line-height: 1.6;
-      overflow-x: hidden; /* avoid horizontal scroll on small screens */
+      overflow-x: hidden;
     }
 
     a {
@@ -53,7 +57,7 @@
       padding: 1.5rem 1.25rem 4rem;
     }
 
-    /* Header / Nav (same style as main site) */
+    /* === HEADER === */
 
     header {
       display: flex;
@@ -62,8 +66,8 @@
       padding: 0.75rem 1rem;
       margin-bottom: 1.5rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(10, 10, 12, 0.9);
+      border: 1px solid rgba(239, 68, 68, 0.25);
       backdrop-filter: blur(14px);
       position: sticky;
       top: 0.75rem;
@@ -82,19 +86,23 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #38bdf8, #0ea5e9 40%, #1d4ed8);
+      background: radial-gradient(
+        circle at 30% 20%,
+        #f87171,
+        #ef4444 45%,
+        #7f1d1d
+      );
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: 0.8rem;
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      border: 1px solid rgba(239, 68, 68, 0.6);
     }
 
     nav {
       display: flex;
       gap: 1.25rem;
       font-size: 0.9rem;
-      flex-wrap: nowrap;
     }
 
     nav a {
@@ -106,7 +114,7 @@
     }
 
     nav a:hover {
-      background: rgba(148, 163, 184, 0.12);
+      background: var(--accent-soft);
       color: var(--text-main);
       transform: translateY(-1px);
     }
@@ -119,26 +127,18 @@
     }
 
     section {
-      background: radial-gradient(circle at top, #020617, #020617 55%, #000);
+      background: radial-gradient(circle at top, #070708, #020203 60%);
       border-radius: var(--radius-xl);
       padding: 1.75rem 1.75rem 2rem;
       border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-soft);
     }
 
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 1.25rem;
-      gap: 1rem;
-    }
-
     .section-title {
       font-size: 1.1rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--accent);
     }
 
     .section-subtitle {
@@ -147,34 +147,17 @@
       max-width: 40rem;
     }
 
-    /* Horizontal scroll rows */
+    /* === CARDS === */
 
     .scroll-row {
       display: flex;
       gap: 1rem;
       overflow-x: auto;
       padding-bottom: 0.5rem;
-      margin: 0 -0.5rem;
-      padding-left: 0.5rem;
-      scroll-snap-type: x proximity;
-    }
-
-    .scroll-row::-webkit-scrollbar {
-      height: 6px;
-    }
-    .scroll-row::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .scroll-row::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.3);
-      border-radius: 999px;
     }
 
     .row-card {
       flex: 0 0 260px;
-      scroll-snap-align: start;
-      text-decoration: none;
-      color: inherit;
     }
 
     .card {
@@ -186,20 +169,19 @@
       flex-direction: column;
       gap: 0.6rem;
       height: 100%;
+      transition: transform 0.15s ease, border-color 0.15s ease;
     }
-    .card img {
-  width: 100%;
-  height: 160px;        /* adjust to taste */
-  object-fit: cover;   /* crop instead of stretch */
-  object-position: center;
-  border-radius: 12px;
-}
 
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(239, 68, 68, 0.6);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
     }
 
     .card-title {
@@ -208,44 +190,36 @@
     }
 
     .card-tag {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       padding: 0.25rem 0.6rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--text-muted);
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: var(--accent);
     }
 
-    .card-body {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
+    /* === FILMSTRIP === */
 
-    .card-footer {
-      margin-top: 0.25rem;
+    .filmstrip {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      font-size: 0.78rem;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding: 2.5rem 2rem;
+      background: #020203;
+      border-radius: 32px;
+      border: 2px solid #1c1c22;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.9);
     }
 
-    .link-chip {
-      padding: 0.3rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.9);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      color: var(--text-muted);
-    }
-
-    .link-chip::before {
-      content: "↗";
-      font-size: 0.65rem;
-      opacity: 0.6;
+    .film-frame {
+      flex: 0 0 230px;
+      height: 300px;
+      background: #000;
+      border-radius: 6px;
+      border: 3px solid #1a1a1d;
+      padding: 8px;
     }
 
     footer {
@@ -254,155 +228,6 @@
       color: var(--text-muted);
       text-align: center;
     }
-
-    /* === FILMSTRIP GALLERY (THROWBACK IMAGES) === */
-
-    .filmstrip {
-      display: flex;
-      gap: 1.5rem;
-      overflow-x: auto;
-      padding: 2.5rem 2rem;
-      margin: 0 -0.5rem;
-      background: #020617;
-      border-radius: 32px;
-      border: 2px solid #1f2937;
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85);
-      position: relative;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: auto;
-    }
-
-    .filmstrip::-webkit-scrollbar {
-      height: 6px;
-    }
-    .filmstrip::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.4);
-      border-radius: 999px;
-    }
-
-    .filmstrip::before,
-    .filmstrip::after {
-      content: "";
-      position: absolute;
-      left: 1.5rem;
-      right: 1.5rem;
-      height: 10px;
-      background:
-        repeating-linear-gradient(
-          to right,
-          transparent 0 26px,
-          #000 26px 34px
-        );
-      border-radius: 999px;
-      opacity: 0.85;
-    }
-
-    .filmstrip::before {
-      top: 8px;
-    }
-
-    .filmstrip::after {
-      bottom: 8px;
-    }
-
-    .film-frame {
-      flex: 0 0 230px;
-      height: 300px;
-      background: #000;
-      border-radius: 6px;
-      border: 3px solid #111827;
-      padding: 8px;
-      scroll-snap-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .film-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 2px;
-    }
-
-    .film-frame:nth-child(odd) {
-      transform: rotate(-1.5deg);
-    }
-    .film-frame:nth-child(even) {
-      transform: rotate(1.5deg);
-    }
-
-    /* === ANIMATIONS === */
-
-    .fade-in-up,
-    .slide-in-left {
-      opacity: 0;
-    }
-
-    .fade-in-up {
-      transform: translateY(18px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .slide-in-left {
-      transform: translateX(-24px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .fade-in-up.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .slide-in-left.is-visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    @media (max-width: 768px) {
-      header {
-        border-radius: 16px;
-      }
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .page {
-        padding: 1.25rem 1rem 3rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.6rem;
-      }
-
-      nav {
-        width: 100%;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: 0.5rem 0.9rem;
-      }
-
-      .page {
-        padding: 1.25rem 0.9rem 3rem;
-      }
-
-      section {
-        padding: 1.4rem 1.25rem 1.75rem;
-      }
-
-      .row-card {
-        flex: 0 0 80%;  /* show most of the card and invite horizontal scroll */
-        max-width: 320px;
-      }
-
-      .film-frame {
-        flex: 0 0 70%;
-      }
-    }
   </style>
 </head>
 
@@ -410,7 +235,7 @@
   <div class="page">
     <header class="fade-in-up">
       <div class="brand">
-        <div class="brand-avatar">VJ</div>
+        <div class="brand-avatar">CH</div>
         <div>Chiel van Heerwaarden – Studio Dark Tech</div>
       </div>
       <nav>
@@ -464,7 +289,7 @@
           
 
           <!-- Research on awareness and impact of social isolation -->
-          <a class="row-card slide-in-left" href="document-viewer.html?file=Docs/Facial_Recogniton_Research.md" target="_blank">
+          <a class="row-card slide-in-left" href="document-viewer.html?file=Docs/Sociale_isolatie.md" target="_blank">
             <article class="card">
             <img src="Images/isoolation.webp" alt="Dungeon Discovery" />
               <div class="card-header">

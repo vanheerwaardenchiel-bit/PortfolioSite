@@ -8,17 +8,35 @@
 
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-alt: #020617;
-      --card-bg: #111827;
-      --accent: #38bdf8;
-      --accent-soft: #0f172a;
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-subtle: #1f2937;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.75);
+      --bg: #1a0b0b;
+    --bg-alt: #0f0505;
+    --card-bg: #1f0b0b;
+    --accent: #ef4444;      
+    --accent-soft: #2a0f0f;
+    --text-main: #ffffff;                  
+    --text-muted: rgba(255, 255, 255, 0.72); 
+    --border-subtle: #3a1a1a;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --shadow-soft: 0 18px 40px rgba(80, 10, 10, 0.75);
+    }
+
+    .hero-name {
+    display: flex;
+    flex-direction: column;   /* stack image above text */
+    align-items: center;      /* center horizontally */
+    gap: 1rem;                /* space between photo and name */
+    text-align: center;
+    }
+
+    .profile-photo {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      background: #000;
     }
 
     * {
@@ -30,7 +48,7 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Inter", sans-serif;
-      background: radial-gradient(circle at top left, #1e293b, #020617 50%);
+      background: radial-gradient(circle at top left, #3a1515, #0f0505 50%);
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden; /* prevent horizontal chop on small screens */
@@ -62,8 +80,8 @@
       padding: 0.75rem 1rem;
       margin-bottom: 1.5rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.2);
+        background: rgba(10, 10, 12, 0.9);
+      border: 1px solid rgba(239, 68, 68, 0.25);
       backdrop-filter: blur(14px);
       position: sticky;
       top: 0.75rem;
@@ -82,7 +100,7 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #38bdf8, #0ea5e9 40%, #1d4ed8);
+      background: radial-gradient(circle at 30% 20%, #f87171, #ef4444 40%, #991b1b);
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -223,8 +241,8 @@
     }
 
     .btn-primary {
-      background: radial-gradient(circle at 30% 0%, #38bdf8, #0ea5e9 30%, #1e40af);
-      border-color: rgba(56, 189, 248, 0.8);
+     background: radial-gradient(circle at 30% 0%, #f87171, #ef4444 30%, #991b1b);
+      border-color: rgba(239, 68, 68, 0.8);
       color: #020617;
       font-weight: 500;
     }
@@ -267,7 +285,7 @@
     }
 
     .hero-side {
-      background: radial-gradient(circle at top, #1d283a, #020617 60%);
+      background: radial-gradient(circle at top, #3a1515, #0f0505 60%);
       border-radius: var(--radius-xl);
       padding: 1.1rem 1.2rem;
       border: 1px solid rgba(148, 163, 184, 0.35);
@@ -365,17 +383,18 @@
       font-size: 0.95rem;
       font-weight: 500;
     }
-
     .card-tag {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       padding: 0.25rem 0.6rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--text-muted);
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: var(--accent);
     }
+
+   
 
     .card-body {
       font-size: 0.85rem;
@@ -547,10 +566,17 @@
       <!-- HERO -->
       <section class="hero fade-in-up" id="about">
         <div class="hero-main">
+          <div class="hero-name">
+        <img
+          src="Images/meest recente foto 12-12.jpg"
+          alt="Photo of Chiel van Heerwaarden"
+          class="profile-photo"
+          />
           <h1>Chiel van Heerwaarden</h1>
+          </div>
           <p class="hero-tagline">
             Bachelor of ICT student and developer documenting experiments, prototypes,
-            games, and other findings.From developing Unity games to managing the process.
+            games, and other findings. From developing Unity games to managing the process.
           </p>
 
           <!-- <div class="hero-meta">

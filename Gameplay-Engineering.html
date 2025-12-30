@@ -7,18 +7,23 @@
   <meta name="description" content="Personal Development Plan, research and visuals for Gameplay Engineering." />
 
   <style>
-    :root {
-      --bg: #0f172a;
-      --bg-alt: #020617;
-      --card-bg: #111827;
-      --accent: #38bdf8;
-      --accent-soft: #0f172a;
+   :root {
+      --bg: #0b0b0f;
+      --bg-alt: #050507;
+      --card-bg: #111114;
+
+      /* 🔴 RED ACCENT PALETTE */
+      --accent: #ef4444;
+      --accent-soft: rgba(239, 68, 68, 0.15);
+
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
-      --border-subtle: #1f2937;
+
+      --border-subtle: #1f1f24;
       --radius-lg: 16px;
       --radius-xl: 24px;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.75);
+
+      --shadow-soft: 0 18px 40px rgba(80, 10, 10, 0.75);
     }
 
     * {
@@ -30,7 +35,7 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Inter", sans-serif;
-      background: radial-gradient(circle at top left, #1e293b, #020617 50%);
+       background: radial-gradient(circle at top left, #1a0b0b, #050507 55%);
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden; /* avoid horizontal scroll on small screens */
@@ -62,8 +67,8 @@
       padding: 0.75rem 1rem;
       margin-bottom: 1.5rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(10, 10, 12, 0.9);
+      border: 1px solid rgba(239, 68, 68, 0.25);
       backdrop-filter: blur(14px);
       position: sticky;
       top: 0.75rem;
@@ -82,13 +87,19 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #38bdf8, #0ea5e9 40%, #1d4ed8);
+      background: radial-gradient(
+        circle at 30% 20%,
+        #f87171,
+        #ef4444 45%,
+        #7f1d1d
+      );
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: 0.8rem;
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      border: 1px solid rgba(239, 68, 68, 0.6);
     }
+
 
     nav {
       display: flex;
@@ -106,7 +117,7 @@
     }
 
     nav a:hover {
-      background: rgba(148, 163, 184, 0.12);
+      background: var(--accent-soft);
       color: var(--text-main);
       transform: translateY(-1px);
     }
@@ -119,7 +130,7 @@
     }
 
     section {
-      background: radial-gradient(circle at top, #020617, #020617 55%, #000);
+      background: radial-gradient(circle at top, #070708, #020203 60%);
       border-radius: var(--radius-xl);
       padding: 1.75rem 1.75rem 2rem;
       border: 1px solid var(--border-subtle);
@@ -138,7 +149,7 @@
       font-size: 1.1rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--accent);
     }
 
     .section-subtitle {
@@ -188,6 +199,8 @@
       height: 100%;
     }
 
+   
+
     .card-header {
       display: flex;
       align-items: center;
@@ -201,14 +214,14 @@
     }
 
     .card-tag {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       padding: 0.25rem 0.6rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--text-muted);
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: var(--accent);
     }
 
     .card-body {
@@ -422,7 +435,7 @@
   <div class="page">
     <header class="fade-in-up">
       <div class="brand">
-        <div class="brand-avatar">VJ</div>
+        <div class="brand-avatar">CH</div>
         <div>Chiel van Heerwaarden – Gameplay Engineering</div>
       </div>
       <nav>
@@ -482,7 +495,7 @@
             target="_blank">
             <article class="card fade-in-up">
                 <div class="card-image card-image--ambient">
-                <img src="Images/Images_GPE/DifferentEnvironments.png"
+                <img src="Images/GPE/darkbound thumbnail.png"
                     alt="Darkbound" />
                 </div>
                 <div class="card-header">
@@ -502,7 +515,7 @@
      target="_blank">
     <article class="card fade-in-up">
       <div class="card-image">
-        <img src="Images/Money_The_Energy_Transition_Game_Cover.png"
+        <img src="Images/grimventory_thumbnail.png"
              alt="Grimventory cover" />
       </div>
       <div class="card-header">
@@ -521,7 +534,7 @@
           <a class="row-card slide-in-left" href="document-viewer.html?file=Docs/Code_Conventions_Money_Game.md" target="_blank">
             <article class="card">
                 <div class="card-image card-image--ambient">
-                <img src="Images/Images_GPE/CurlyBrackets.jpeg" alt="Ambient Audio Experiment" />
+                <img src="Images/images.png" alt="Ambient Audio Experiment" />
                 </div>
               <div class="card-header">
                 <h3 class="card-title">Code Conventions Document</h3>
@@ -573,53 +586,37 @@
 
         <div class="filmstrip">
           <div class="film-frame">
-            <img src="Images/Images_GPE/ResearchThumbnail.png" alt="Research Paper Thumbnail" />
+            <img src="Images/GPE/GPEslideshow1.png alt="Research Paper Thumbnail" />
           </div>
           <div class="film-frame">
-            <img src="Images/Images_GPE/Japan.png" alt="Environment Image" />
+            <img src="Images/GPE/GPEslideshow2.png" alt="Environment Image" />
           </div>
           <div class="film-frame">
-            <img src="Images/Images_GPE/MysteriousEgypt.png" alt="Environment Image" />
+            <img src="Images/GPE/GPEslideshow3.png" alt="Environment Image" />
           </div>
           <div class="film-frame">
-            <img src="Images/Images_GPE/WestTrainstation.png" alt="Environment Image" />
+            <img src="Images/GPE/GPEslideshow4.png" alt="Environment Image" />
           </div>
           <div class="film-frame">
-            <img src="Images/Images_GPE/AbandonedIsland.png" alt="Environment Image" />
+            <img src="Images/GPE/GPEslideshow5.png" alt="Environment Image" />
           </div>
           <div class="film-frame">
-            <img src="Images/Images_GPE/Money_Energy_Transition/PhysicalGame.jpg" alt="Environment Image" />
+            <img src="Images/GPE/GPEslideshow6.png" alt="Environment Image" />
           </div>
           <div class="film-frame">
-            <img src="Images/Images_GPE/Money_Energy_Transition/ConceptSketch.jpg" alt="Environment Image" />
+            <img src="Images/GPE/GPEslideshow7.png" alt="Environment Image" />
           </div>
           <div class="film-frame">
-            <img src="Images/Images_GPE/Money_Energy_Transition/Early3DMap.png" alt="Environment Image" />
+            <img src="Images/GPE/GPEslideshow8.png" alt="Environment Image" />
           </div>
-          <div class="film-frame">
-            <img src="Images/Images_GPE/Money_Energy_Transition/Jaap.png" alt="Environment Image" />
-          </div>
-          <div class="film-frame">
-            <img src="Images/Images_GPE/Money_Energy_Transition/ColoredCodedMap.jpg" alt="Environment Image" />
-          </div>
-          <div class="film-frame">
-            <img src="Images/Images_GPE/Money_Energy_Transition/3DMap.png" alt="Environment Image" />
-          </div>
-          <div class="film-frame">
-            <img src="Images/Money_The_Energy_Transition_Game_Cover.png" alt="Environment Image" />
-          </div>
-          <div class="film-frame">
-            <img src="Images/Images_GPE/Money_Energy_Transition/RevoCard1.png" alt="Environment Image" />
-          </div>
-          <div class="film-frame">
-            <img src="Images/Images_GPE/Money_Energy_Transition/RevoCard2.png" alt="Environment Image" />
-          </div>
+        
+      
         </div>
       </section>
     </main>
 
     <footer>
-      © <span id="year"></span> VBJ Services
+      © <span id="year"></span> Chiel van Heerwaarden
     </footer>
   </div>
 
