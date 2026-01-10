@@ -1,7 +1,4 @@
----
-layout: default
-title: Sociale isolatie
----
+
 
 # Afzondering in de openbare ruimte
 
